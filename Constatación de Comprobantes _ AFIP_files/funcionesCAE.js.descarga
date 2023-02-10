@@ -1,0 +1,266 @@
+// JavaScript Document
+
+$(document).ready(function () {
+
+	$('[id$=p_tipo_cbte]').combobox();  	
+	$('[id$=p_tipo_doc]').combobox();  
+
+    $('#p_importe').tipsy({trigger: 'focus', gravity: 'w'});
+    $('#p_CAE').tipsy({trigger: 'focus', gravity: 'w'});
+		
+	funcionesComunes(1); //common.js
+	
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+	let value = params.p;
+	
+	if (value != null) {
+		completarCampos();
+	}
+});
+
+function consultarDatos() {
+    var cons = armarConsulta();
+    var resultado = '';
+    var valor = '';
+	$.ajax({
+		url: "cae.aspx/ConsultarDatos",
+		type: "POST",
+		dataType: "json",
+		async: false,
+		data: JSON.stringify(cons),
+		contentType: "application/json; charset=utf-8",
+        success: function (res) {
+            $.each(res.d, function (key, value) {
+                resultado = key;
+                valor = value.toString();
+            });            
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+            jsonValue = jQuery.parseJSON(xhr.responseText);
+        }
+    });
+	
+	var divDetalle = $('#divDetalle').empty().removeClass();
+	$('#divDetalle').css("display", "block");
+	
+	showCommonMensaje(valor, $('#divMensaje'));
+
+    if (resultado != '-2') {
+        $('#formularioDatos').find(':input').prop('disabled', true);   
+		$('.ui-button').css('display', 'none');		
+        $('#btnModificarConsulta').css('display', 'inline');
+        $('#btnLimpiar').css('display', 'none');
+    }else{
+		$('[id$=txtCaptcha]').focus().select();
+	}
+
+	if (resultado != '-1' && resultado != '-2') {
+
+        var denominacion = buscarCuit(cons.cuit);
+
+		innerHTML = "<div class='border-1 recuadroGrisClaro marginBottom-20'>";
+		innerHTML += "<ul class='arrowAzul'>";
+		innerHTML += "<li>CUIT: <strong>" + $('#p_CUIT').val() + "</strong></li>";
+		innerHTML += "<li>Denominaci&oacute;n: <strong>" + denominacion + "</strong></li>";
+		innerHTML += "<li>CAE: <strong>" + $('#p_CAE').val() + "</strong></li>";
+		innerHTML += "<li>Fecha de Emisi&oacute;n: <strong>" + $('#p_fch_emision').val() + "</strong></li>";
+		innerHTML += "<li>Tipo de Comprobante: <strong>" + $('[id$=p_tipo_cbte] option:selected').text() + "</strong></li>";
+		innerHTML += "<li>Comprobante: <strong>" + $('#p_pto_vta').val() + "-" + $('#p_nro_cbte').val() + "</strong></li>";
+		innerHTML += "<li>Importe Total: <strong>" + $('#p_importe').val() + "</strong></li>";
+		
+        var tipo = "";
+		if ($('[id$=p_tipo_doc]').val() != "") {
+		    tipo = $('[id$=p_tipo_doc] option:selected').text();
+		    innerHTML += "<li>Documento: <strong>" + tipo + " " + $('#p_nro_doc').val() + "</strong></li>";
+		}
+
+		innerHTML += "</ul>"
+		innerHTML += "</div>";
+
+		divDetalle.append($(innerHTML)).fadeIn(1500);
+		$('[id$=txtCaptcha]').val('');
+		refrescarCaptcha();
+    }
+
+    if (resultado == -1) {
+		$('#p_CUIT').focus();
+    }
+
+	if (resultado == 0) {
+		$('#divDetalle').css("display", "none");
+	}
+
+    $("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
+
+    refrescarCaptcha();
+
+}
+
+function armarConsulta() {
+	var consulta = {};
+	
+	consulta.cuit = $('#p_CUIT').val();
+	consulta.cae = $('#p_CAE').val();
+	consulta.fecha_emision = $('#p_fch_emision').val();
+	consulta.tipo_comprobante = $('[id$=p_tipo_cbte]').val();
+	consulta.punto_venta = $('#p_pto_vta').val();
+	consulta.nro_comprobante = $('#p_nro_cbte').val();
+	consulta.importe = $('#p_importe').val();    
+	consulta.tipo_documento = $('[id$=p_tipo_doc]').val();
+	consulta.nro_documento = $('#p_nro_doc').val();
+	consulta.cap = $('[id$=txtCaptcha]').val();    
+
+    return consulta;
+}
+
+function buscarCuit(cuit) {
+    var result = "";
+    var datos = {}
+	datos.cuit = cuit; //$('#p_CUIT').val();
+    $.ajax({
+        url: "cae.aspx/BuscarPersona",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(datos),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (res) {
+            result = res.d;
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+    return result;    
+}
+
+function completarCampos() {
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+		get: (searchParams, prop) => searchParams.get(prop)
+	});
+	let value = params.p;
+
+	var mensaje = "<div class='border-1 recuadroGrisClaro paddingInterno-5 marginBottom-20' style='border:1px solid rgb(255,0,0);'>";
+	mensaje += "<h3><img src='images/error.png' class='icon48 padding-10'>";
+	mensaje += "Los datos que contiene el QR escaneado est&aacute;n incompletos. Pod&eacute;s realizar la consulta ingresando los datos del comprobante de forma manual.";
+	mensaje += "</h3></div>";
+
+	$('#formularioDatos').find(':input').prop('disabled', true);
+	$('.ui-button').css('display', 'none');
+	$('#btnModificarConsulta').css('display', 'none');
+	$('#btnLimpiar').css('display', 'inline');
+	$('#btnConsultarDatos').css('display', 'inline');
+
+	if (value != null) {
+		var match = true; 
+		$('#formularioDatos').find(':input').prop('disabled', true);
+		var decodedp = atob(value);
+		var objparam;
+
+        try {
+			objparam = JSON.parse(decodedp);        
+
+			if (objparam.hasOwnProperty('cuit') && (typeof objparam.cuit == "number")) {
+				$('#p_CUIT').val(objparam.cuit);
+			} else {
+				match = false;
+				$('#p_CUIT').prop('disabled', false);
+			}
+
+			if (objparam.hasOwnProperty('codAut') && (typeof objparam.codAut == "number"))
+				$('#p_CAE').val(objparam.codAut);
+			else {
+				match = false;
+				$('#p_CAE').prop('disabled', false);
+			}
+
+			if (objparam.hasOwnProperty('fecha')) {
+				var dateParts = objparam.fecha.split("-");
+				$("#p_fch_emision").datepicker('setDate', dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0]);
+
+				if ($("#p_fch_emision").val() != (dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0])) {
+					match = false;
+					$("#p_fch_emision").prop('disabled', false);
+					$("#p_fch_emision").val("");
+				}
+			} else {
+				match = false;
+				$("#p_fch_emision").prop('disabled', false);
+				$("#p_fch_emision").val("");
+			}
+
+			if (objparam.hasOwnProperty('tipoCmp') && (typeof objparam.tipoCmp == "number")) {
+				$('[id$=p_tipo_cbte]').val(Number(objparam.tipoCmp));
+				var txtCbte = $('[id$=p_tipo_cbte]').find(":selected").text();
+				$('[id$=p_tipo_cbte]').parent().find("span").find("input").val(txtCbte);
+				if (txtCbte == "") {
+					match = false;
+					$('[id$=p_tipo_cbte]').parent().find("span").find("input").prop('disabled', false);
+					$('[id$=p_tipo_cbte]').parent().find("span").find(".ui-button").css('display', 'inline-block');
+				}
+			} else {
+				match = false;
+				$('[id$=p_tipo_cbte]').parent().find("span").find("input").prop('disabled', false);
+				$('[id$=p_tipo_cbte]').parent().find("span").find(".ui-button").css('display', 'inline-block');
+			}
+
+			if (objparam.hasOwnProperty('ptoVta') && (typeof objparam.ptoVta == "number")) {
+				$('#p_pto_vta').val(('0' + Number(objparam.ptoVta)).slice(-5));
+			} else {
+				match = false;
+				$('#p_pto_vta').prop('disabled', false);
+			}
+
+			if (objparam.hasOwnProperty('nroCmp') && (typeof objparam.nroCmp == "number")) {
+				$('#p_nro_cbte').val(('0' + Number(objparam.nroCmp)).slice(-8));
+			} else {
+				match = false;
+				$('#p_nro_cbte').prop('disabled', false);
+			}
+
+			if (objparam.hasOwnProperty('importe') && (typeof objparam.importe == "number")) {
+				$('#p_importe').val(Number(objparam.importe));
+			} else {
+				match = false;
+				$('#p_importe').prop('disabled', false);
+			}
+
+			if (objparam.hasOwnProperty('tipoDocRec') && (typeof objparam.tipoDocRec == "number")) {
+				$('[id$=p_tipo_doc]').val(Number(objparam.tipoDocRec));
+				var txtDoc = $('[id$=p_tipo_doc]').find(":selected").text();
+				$('[id$=p_tipo_doc]').parent().find("span").find("input").val(txtDoc);
+				if (txtDoc == "") {
+					match = false;
+					$('[id$=p_tipo_doc]').parent().find("span").find("input").prop('disabled', false);
+					$('[id$=p_tipo_doc]').parent().find("span").find(".ui-button").css('display', 'inline-block');
+				}
+			} else {
+				match = false;
+				$('[id$=p_tipo_doc]').parent().find("span").find("input").prop('disabled', false);
+				$('[id$=p_tipo_doc]').parent().find("span").find(".ui-button").css('display', 'inline-block');
+			}
+
+			if (objparam.hasOwnProperty('nroDocRec') && (typeof objparam.nroDocRec == "number")) {
+				$('#p_nro_doc').val(Number(objparam.nroDocRec));
+			} else {
+				match = false;
+				$('#p_nro_doc').prop('disabled', false);
+			}
+
+			if (!match) {
+				showCommonMensaje(mensaje, $('#divMensaje'));
+			}
+
+		} catch (e) {
+			objparam = null;			
+
+			showCommonMensaje(mensaje, $('#divMensaje'));
+		}
+	}
+
+}

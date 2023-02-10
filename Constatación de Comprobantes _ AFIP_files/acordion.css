@@ -1,0 +1,199 @@
+
+/* Acordion */
+
+.separadorAcordion {
+	height: 5px;
+}
+.acordion {
+}
+.sysAcordion {
+}
+
+/* Sin seleccionar */
+.acordion00 .expand, .acordion .expand {
+	font-family:"Open Sans" ,sans-serif;
+	line-height:20px;
+	font-weight:500;
+	letter-spacing:0.5px;
+	padding:15px;
+	vertical-align:middle;
+	margin-top:0px;
+	border: solid 1px #dadada !important;
+	text-transform:uppercase;
+	
+}
+
+
+.acordion00 .expand:hover, .acordion .expand:hover {
+	color:#FFF;
+}
+.acordion00 .expand a, .acordion .expand a {
+	background:url(images/arrow/negro/left.png) no-repeat 0 0px;
+	padding-left:25px;
+	font-size:18px;
+	font-weight:400 !important;
+	line-height:18px;
+	overflow:hidden;
+	height:20px;
+	display:block;
+	text-decoration:none;
+	color:#2c3135 !important;
+}
+.acordion00 .expand a:hover, .acordion .expand a:hover {
+	background:url(images/arrow/negro/down.png) no-repeat 0 0px;
+	padding-left:25px;
+	text-decoration:none;
+	color: #000 !important;
+}
+
+
+
+.acordion00.small .expand , .acordion.small .expand  {
+	font-family:"Open Sans" ,sans-serif;
+	line-height:20px;
+	font-weight:500;
+	letter-spacing:0.5px;
+	padding:10px 15px !important;
+}
+
+
+.acordion00.small .expand a, .acordion.small .expand a {
+	background-size:16px 16px !important;
+    padding-left: 25px;
+    font-size: 15px !important;
+    line-height: 18px;
+
+}
+
+.acordion00.small .expand a:hover, .acordion.small .expand a:hover {
+	background-size:16px 16px !important;
+
+}
+/* seleccionado */
+.acordion00.small .openAd, .acordion.small .openAd {
+	font-weight:500;
+	border-bottom:solid 1px #fff;
+	
+
+}
+.acordion00.small .openAd a, .acordion.small .openAd a {
+	color:#FFF !important;
+	text-decoration:none;
+}
+
+.acordion00.small .openAd a:hover, .acordion.small .openAd a:hover {
+	color:#FFF !important;
+	text-decoration:none;
+}
+
+
+/* Arrow1 */
+.acordion00.arrow1 .expand a, .acordion.arrow1 .expand a {
+    background:url(/sitio/images/iconos/negro/hardware/keyboard_arrow_down_36.png) no-repeat 0 0px !important;
+	background-size:20px 20px !important;
+}
+
+.acordion00.arrow1 .expand a:hover, .acordion.arrow1 .expand a:hover {
+	background:url(/sitio/images/iconos/negro/hardware/keyboard_arrow_down_36.png) no-repeat 0 0px !important;
+	background-size:20px 20px !important;
+	padding-left:25px;
+	text-decoration:none;
+	color: #000 !important;
+}
+
+.acordion00.arrow1 .openAd a, .acordion.arrow1 .openAd a {
+	background:url(/sitio/images/iconos/blanco/hardware/keyboard_arrow_right_36.png) no-repeat 0 0px !important;
+	background-size:20px 20px !important;
+}
+
+.acordion00.arrow1 .openAd a:hover, .acordion.arrow1 .openAd a:hover {
+	background:url(/sitio/images/iconos/blanco/hardware/keyboard_arrow_up_36.png) no-repeat 0 0px!important;
+	background-size:20px 20px !important;
+	color: #FFF !important;
+}
+
+
+/* Plus */
+.acordion00.plus .expand a, .acordion.plus .expand a {
+    background:url(/sitio/images/iconos/negro/content/add_36.png) no-repeat 0 0px !important;
+	background-size:18px 18px !important;
+}
+
+.acordion00.plus .expand a:hover, .acordion.plus .expand a:hover {
+	background:url(/sitio/images/iconos/negro/content/add_36.png) no-repeat 0 0px !important;
+	background-size:18px 18px !important;
+	padding-left:25px;
+	text-decoration:none;
+	color: #000 !important;
+}
+
+.acordion00.plus .openAd a, .acordion.plus .openAd a {
+	background:url(/sitio/images/iconos/blanco/content/remove_36.png) no-repeat 0 0px !important;
+	background-size:18px 18px !important;
+}
+
+.acordion00.plus .openAd a:hover, .acordion.plus .openAd a:hover {
+	background:url(/sitio/images/iconos/blanco/content/remove_36.png) no-repeat 0 0px!important;
+	background-size:18px 18px !important;
+	color: #FFF !important;
+}
+
+
+
+
+
+/* seleccionado */
+.acordion00 .openAd, .acordion .openAd {
+	font-weight:500;
+	border-bottom:solid 1px #fff;
+	background-color: #1784c7 !important;
+	border: solid 1px #1784c7 !important;
+	border-bottom:solid 1px #1784c7 !important;
+}
+.acordion00 .openAd a, .acordion .openAd a {
+	background:url(images/arrow/blanco/left.png) no-repeat 0 0px;
+	color:#FFF !important;
+	text-decoration:none;
+}
+
+
+.acordion00 .openAd a:hover, .acordion .openAd a:hover {
+	background:url(images/arrow/blanco/up.png) no-repeat 0 0px;
+	color:#FFF !important;
+	text-decoration:none;
+}
+.acordion00 .collapse, .acordion .collapse {
+	margin:0;
+	border-top:none;	
+	background:#fff;
+	border: solid 1px #dadada !important;
+    border-bottom: solid 6px #1784c7 !important;
+}
+.acordion00 .accCntnt, .acordion .accCntnt {
+	border-top:none;
+	display:block;
+	padding-right:20px;
+	margin:0 auto;
+	margin-top:15px;
+	margin-bottom:20px;
+	position:relative;
+}
+/* Respuesta */ .acordion00 .accCntnt, .acordion .accCntnt {
+	color:#444;
+	padding-left:5px;
+}
+.acordion00 .accCntnt p, .acordion .accCntnt p {
+	margin-bottom:10px;
+	line-height:1.8;
+	font-family:"Open Sans",sans-serif;
+	font-size:13px;
+	font-weight:400;
+}
+.acordion00 .accCntnt, .acordion .accCntnt {
+	padding:20px 40px 20px 40px;
+		
+}
+
+.bandeja {
+	padding:10px 10px 20px 10px;
+	}

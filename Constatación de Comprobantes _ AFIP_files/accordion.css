@@ -1,0 +1,256 @@
+
+/* Vertical Accordion Style */
+#va-accordion{
+	width:100% !important;
+}
+.va-container{
+	position:relative;
+	margin:40px auto 0 auto;
+}
+.va-wrapper{
+	width:100%;
+	height:100%;
+	position:relative;
+	overflow:hidden;
+	/*background:#000;*/
+}
+.va-slice{
+	cursor:pointer;
+	position:absolute;
+	width:100%;
+	left:0px;
+	overflow:hidden;
+	border-bottom: 1px solid #fff;
+}
+.va-slice-1{
+	background:#000 url(../images/1.jpg) no-repeat center center;
+}
+.va-slice-2{
+	background:#000 url(../images/2.jpg) no-repeat center center;
+}
+.va-slice-3{
+	background:#000 url(../images/3.jpg) no-repeat center center;
+}
+.va-slice-4{
+	background:#000 url(../images/4.jpg) no-repeat center center;
+}
+.va-slice-5{
+	background:#000 url(../images/5.jpg) no-repeat center center;
+}
+.va-slice-6{
+	background:#000 url(../images/6.jpg) no-repeat center center;
+}
+.va-slice-7{
+	background:#000 url(../images/7.jpg) no-repeat center center;
+}
+.va-slice-color-1{
+	background-color:#016887;
+}
+.va-slice-color-2{
+	background-color:#007ca0;
+}
+.va-slice-color-3{
+	background-color:#0091bb;
+}
+.va-slice-color-4{
+	background-color:#07a8d9;
+}
+.va-title{
+	font-size:16px;
+	color:#fff;
+	position:relative;
+	overflow:hidden;
+	line-height:16px !important;
+	height: 60px !important;
+}
+.va-content{
+	display:none;
+	margin: 0;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 60px;
+	overflow: auto;
+	padding:10px;
+}
+.va-content table{
+	border:1px solid #FFF;
+	margin-bottom:15px;
+}
+.va-content table td{
+	font-size:12px !important;
+	color:#FFF;
+	line-height:normal;
+}
+.va-content p{
+	font-size:12px !important;
+}
+.va-slice p{
+	font-size: 17px;
+	line-height: 20px;
+	margin: 0px 10px 15px;
+	display: list-item;
+	color:#FFF;
+}
+.va-slice ul{
+	margin-top:20px;
+}
+.va-slice ul li{
+	float:left;
+	margin:0px 2px;
+}
+.va-slice ul li a{
+	color:#000;
+	background:#eede2f;
+	padding:3px 6px;
+	font-size:14px;
+	text-transform:uppercase;
+}
+.va-slice ul li a:hover{
+	background:#000;
+	color:#fff;
+	text-shadow:none;
+}
+.va-nav span{
+	width:40px;
+	height:25px;
+	background:transparent url(../images/prev.png) no-repeat center center;
+	position:absolute;
+	top:-35px;
+	/*left:50%;
+	margin-left:-20px;*/
+	right:15px;
+	text-indent:-9000px;
+	opacity:0.7;
+	cursor:pointer;
+	display:none;
+	z-index:100;
+}
+.va-nav span.va-nav-prev{
+	top:auto !important;
+	bottom:35px;
+}
+.va-nav span.va-nav-next{
+	background-image:url(../images/next.png);
+	top:auto;
+	bottom:-35px;
+}
+.va-nav span:hover{
+	opacity:1.0;
+}
+
+
+
+.vencimiento {
+	height:45px;
+	border-bottom:1px solid #81bcce;
+	position:relative;
+}
+.vencTitulo {
+	background:#00466a;
+	line-height:45px;
+	border-bottom:1px solid #fff !important;
+	font-size:22px;
+	font-weight:100;
+	padding-left:15px;
+	height:45px;
+	position:relative;
+}
+.vencTitulo span{
+	font-weight:400;
+	text-transform:uppercase;
+}
+.vencTitulo a{
+	position:absolute;
+	right:10px;
+	height:24px;
+	width:24px;
+	top:50%;
+	margin-top:-12px;
+}
+.vencTitulo a img{
+	width:100%;
+}
+.vencData{
+	font-size:13px;
+	padding-left:10px;
+}
+.venc01 {
+	background:#016887;
+}
+.venc02 {
+	background:#01799c;
+}
+.venc03 {
+	background:#0093be;
+}
+.venc04 {
+	background:#00a8d9;
+}
+.vencDia {
+	border-right:1px solid #fff;
+	height:100%;
+	line-height:45px;
+	text-align:center;
+	font-size: 14px;
+	font-weight: 700;
+}
+.vencLink {
+	text-align:center;
+	position:absolute;
+	right:0;
+	top:50%;
+	margin-top:-10.5px;
+}
+.vencAccDia {
+	width:29%;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	font-size:14px;
+	position:relative;
+	/*padding-left:7px;
+	padding-right:50px;*/
+	text-align:center;
+	background:url(../images/backDia.png) repeat;
+}
+.vencAccDia strong {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 17px;
+	font-weight: 700;
+	height: 30px;
+	width: 30px;
+	background: url(../images/fecha.png) repeat;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	/*float: left;
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	right:5px;*/
+	color:#333;
+	letter-spacing: -0.03em;
+	margin-left:3px;
+}
+.vencAccData {
+	width:71%;
+	border-bottom: 1px solid #fff;
+	padding: 0 10px 0 10px;
+	font-size:13px;
+	font-weight: 600;
+}
+.vDia {
+	width:30px;
+	text-align:right;
+	text-transform:uppercase;
+}
+.vencAccDataVA {
+	display:table-cell;
+	vertical-align:middle;
+}
+.vencAccDia, .vencAccImg, .vencAccData {
+	display:table;
+	height:100%;
+	float:left;
+}

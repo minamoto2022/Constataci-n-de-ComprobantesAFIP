@@ -1,0 +1,112 @@
+.units-row {
+    margin-bottom: 1.15em !important;
+}
+
+#formularioDatos input[type=text] {
+	width:250px;
+	margin: 0px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 15px;
+}
+
+h6 {	
+	line-height: 16px;
+    text-transform: none;
+    margin: 8px 0 5px 0;
+    overflow: visible;
+}
+
+#moneda p {
+	margin: 0px 0 0 10px;
+}
+
+.container input[type=text] {
+	font-size: 15px !important;
+}
+
+#ui-datepicker-div td, th {
+    font-size: 14px !important;
+}
+
+#p_pto_vta {
+	width:75px !important; 
+	display:inline-block; 
+	text-align:center;
+}
+
+#p_nro_cbte {
+	width:145px !important; 
+	display:inline-block; 
+	text-align:center;
+}
+
+#ctl00_cphBody_txtCaptcha {			
+	text-transform:none; 
+	text-align:center; 
+	display:inline-block; 			
+	width:100px !important;
+	padding-left:0;
+}
+
+#imgCaptcha {
+	vertical-align:middle;
+	padding-bottom: 3px;
+}
+
+/*ComboBox*/
+
+ul.ui-autocomplete.ui-widget-content {
+	max-height: 200px;
+	max-width: 654px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+input.custom-combobox-input.ui-autocomplete-input {
+    margin-right: -44px;
+    width: 80%;
+	border: 1px solid #bdc3c7;
+	padding: 7px 6px;
+	outline: none;
+	font-family: "Open Sans",sans-serif;
+	color: #000 !important;
+	margin: 0;
+	display: inline-block;	
+	background: #fff;			
+	font-size: 15px;
+	border-radius:0;	
+}		
+
+.custom-combobox .ui-button {
+    bottom: 3px;
+    height: 36px !important;
+    border-radius: 0;
+    width: 3.2em;
+    margin-left: -1px;
+    border: 1px solid #bdc3c7;
+}
+
+.ui-datepicker-title select {
+	display:inline-block;
+}
+
+#tipo_doc ul.ui-autocomplete.ui-widget-content {
+	max-width: 207px;
+}
+
+#tipo_doc input.custom-combobox-input.ui-autocomplete-input {
+	width: 207px;
+}
+
+#moneda ul.ui-autocomplete.ui-widget-content {
+	max-width: 207px;
+}
+
+#moneda input.custom-combobox-input.ui-autocomplete-input {
+	width: 207px;
+}
+
+/*Fin ComboBox*/

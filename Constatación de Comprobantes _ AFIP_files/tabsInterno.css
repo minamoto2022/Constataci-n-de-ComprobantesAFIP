@@ -1,0 +1,175 @@
+
+ #tabs.ui-tab {
+	zoom: 1;
+}
+ #tabs .ui-tab-nav {
+	list-style:none;
+	position:relative;
+	/*padding:2px 2px 3px 0;*/
+	overflow:hidden;
+	top:1px;
+
+	margin-left:-15px !important;
+	margin:0;
+}
+ #tabs.ui-tab ul {
+	padding-top:10px;
+	
+}
+
+#tabs .ui-widget-header {
+	background-color: transparent;
+	margin:0;
+	border:none;
+	padding:0;}
+
+#tabs .ui-tabs-panel {
+	padding:40px;
+	border:#CCC solid 1px;
+	z-index:0!important;
+	}
+
+#tabs .ui-tab-nav li {
+	position:relative;
+	font-weight:100 !important;
+	padding:1px 2px 1px 2px !important;
+	float:left;
+	margin:0 -1px 0px 0;
+	border:#CCC solid 1px;
+	background:#eee;
+
+}
+
+#tabs .ui-state-default:active, #tabs .ui-state-default,
+#tabs .ui-state-hover, #tabs .ui-state-hover a, #tabs .ui-state-hover span,
+#tabs .ui-state-focus,
+#tabs .ui-state-focus span {
+
+	background: #fff;
+	font-weight: 600 !important;
+	color:#ff7e66 !important;
+	outline:0 !important;
+
+}
+
+		
+.ui-tab .ui-tab-nav li span {	
+	font-size:14px !important;
+	font-weight:100;
+}
+.ui-tab .ui-tab-nav li a {
+	font-size:14px!important;
+	float:left;
+	text-decoration:none;
+	color:#000;
+	font-size:24px;
+
+}
+
+#tabs  li.ui-tab-selected span {
+	color:#ff7e66 !important;
+	font-weight:800 !important;
+	
+}
+ .ui-tab .ui-tab-nav li.ui-tab-selected a,.ui-tab .ui-tab-nav li.ui-state-disabled a,.ui-tab .ui-tab-nav li.ui-state-processing a {
+	cursor:text;
+}
+.ui-tab .ui-tab-nav li a,.ui-tab.ui-tab-collapsible .ui-tab-nav li.ui-tab-selected a {
+	cursor: pointer;
+}
+/* first selector in group seems obsolete,but required to overcome bug in Opera applying cursor:text overall if defined elsewhere... */
+#tabs .ui-tab  {
+	padding:40px !important;
+	margin:-1px 40px 40px 0px;
+	display:block;
+	position:relative;
+	min-height:200px;
+	background:#FFF;
+	overflow:hidden;
+	position:relative;
+	border:#CCC solid 1px;
+}
+#tabs .ui-tab-hide {
+	display:none;
+	border:none !important;
+}
+.iu-tab input[type=text] {
+	box-sizing:border-box;
+	padding:10px !important;
+	border:solid 1px #CCC !important;
+	outline:none;
+}
+ a.mover {
+    background: #ff7e66;
+    color: #FFF !important;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
+    border: none;
+    letter-spacing: 0.5px;
+    display: inline-block;
+	clear:both;
+
+
+
+}
+
+ a.mover:hover {
+
+    background: #000;
+    color: #FFF !important;
+
+
+}
+
+
+.next-tab {
+}
+
+
+.prev-tab {
+
+}
+
+.lastTab {
+	background: #FFF ;
+
+	}
+	
+	
+#tabs .ui-tab-active {
+	border-bottom: #fff solid 1px!important;
+	font-size:50px;
+	outline:0 !important;
+	background:#FFF !important;
+	}
+
+#tabs.ui-state-focus {
+	font-weight:800;
+   outline:0 !important;
+}
+
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+	border:none;
+	outline:0 !important;}
+
+.ui-corner-top .ui-state-default {
+	border-bottom: #fff solid 1px;
+	border-radius:none !important;
+	}
+
+#tabs.li.ui-tab-selected {
+	background:#FFF;
+	border:none !important;
+	padding:12px 30px 12px 15px;
+	
+}
+
+.ui-tab-nav .li.ui-tab-selected .lastTab {
+	background: #FFF;
+	padding:12px 30px 12px 15px;
+	
+}

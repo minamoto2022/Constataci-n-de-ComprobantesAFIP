@@ -1,0 +1,74 @@
+
+$(document).ready(function() {
+	//Script para activar en el menu superior celeste la seccion que se encuentra parado uno	
+	resaltarOpcionMenu();	
+	$("#cssmenu ul li").click(function(){
+		setTimeout(function(){ resaltarOpcionMenu(); }, 300);
+	});
+	
+	//Script para mostrar divs del menu lateral de los micrositios atraves de la url
+	var id = getUrlParameter('id');
+	if(id == undefined || id == ""){
+		id = 1;
+	}
+	$('#listadoLinks').find('ul li').eq(0).addClass('selectedItem');	
+	$('#listadoLinks').find('ul li').addClass('pointer');
+	toggle('listadoLinks', 'link'+id, id);
+	
+	//Script para mostrar tabs atraves de la url
+	var tab = getUrlParameter('tab');
+	if(tab == undefined || tab == ""){
+		tab = 1;
+	}
+	$('#listadoTabs').find('ul li').eq(0).addClass('selectedItem');	
+	$('#listadoTabs').find('ul li').addClass('pointer');
+	tabHorizontal('listadoTabs', 'tab'+tab, 'tabHorizontal-'+tab);
+	
+});
+
+//Script Menu superior Celeste para marcar link activo
+function resaltarOpcionMenu(){
+		$("#cssmenu ul li").removeClass("active").removeClass("bolder");
+		var links = $("#cssmenu ul li");
+		var paginaActual = $(location).attr('href').split('/').slice(-1)[0];
+		var paginaActual2 = window.location.pathname;	
+		for(var i = 0; i < links.length; i++){
+			if(paginaActual == links[i].getElementsByTagName("a")[0].getAttribute("href") || paginaActual2 == links[i].getElementsByTagName("a")[0].getAttribute("href")){			
+				if($(links[i]).hasClass('has-sub')){
+					$(links[i]).addClass("active");					
+				} else if ($(links[i]).parent().parent().attr("id") == "cssmenu"){
+					$(links[i]).addClass("active");
+				} else if ($(links[i]).parent().parent().hasClass('has-sub')){
+					$(links[i]).parent().parent().addClass("active");
+					$(links[i]).addClass("bolder");
+				}
+			}
+		}
+	}
+
+//Script Menu lateral Micrositios 
+function toggle(listado, link, target){
+	$(".infoContent").css('display', 'none');  
+	$("#"+target).css('display', 'block');
+	$("#"+listado).find("li").removeClass('selectedItem');
+	$("#"+link).addClass('selectedItem');
+}
+
+//Script Tabs Horizontal 
+function tabHorizontal(listado, link, target){
+	$(".infoTab").css('display', 'none');  
+	$("#"+target).css('display', 'block');
+	$("#"+listado).find("li").removeClass('selectedItem');
+	$("#"+link).addClass('selectedItem');
+}
+
+function getUrlParameter(sParam) {	
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }	
+}

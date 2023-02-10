@@ -1,0 +1,40 @@
+﻿
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+.modal .titulo {
+    background: #67b8de;
+    padding:15px 15px 1px 15px;
+    color: #FFF;
+}
+
+.modal .titulo h1, .modal .titulo h2, .modal .titulo h3, .modal .titulo h4, .modal .titulo h5, .modal .titulo h6, .modal .titulo p {
+	 color: #FFF !important;
+	 font-weight:300 !important;} 
+
+.modal h2 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+	color: #FFF !important;
+} 
+
+.cuerpo {
+    padding: 30px;
+}
+
+.popup {
+    display: none;
+    background-color: white;
+    padding: 0px;
+    position: fixed;
+    z-index: 5001;
+    border: 1px solid #666;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 500px;
+    text-align: left;
+	box-shadow: 0 0 50px 0 rgba(0,0,0,0.12) !important;
+}
